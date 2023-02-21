@@ -1,97 +1,92 @@
 import pydirectinput
 import time
-from random import random
 
-def adjust_to_side_break():
-    # 0.02 to 0.07 seconds
-    return random() * 0.05 + 0.02
-
-
-def paying_attention_break():
-    # timer between 0.25 seconds to 0.50 seconds
-    return random() * 0.25 + 0.25
-
-
-def next_section_break():
-    # break between 0.275 to 0.3 seconds
-    return random() * 0.025 + 0.275
-
-
-def change_row_break():
-    # 0.2 seconds to 0.225 seconds
-    return random() * 0.025 + 0.2
-
-
-def fake_water():
-    print("watered")
-    return 2
+import random_breaks
+import interact
 
 def move_one(side, face):
+    # move to next soil block
     pydirectinput.keyDown(side)
-    time.sleep(adjust_to_side_break())
+    time.sleep(random_breaks.adjust_to_side_break())
     pydirectinput.keyUp(side)
-    time.sleep(paying_attention_break())
+    time.sleep(random_breaks.paying_attention_break())
+    # face the block
     pydirectinput.press(face)
-    time.sleep(paying_attention_break())
+    time.sleep(random_breaks.paying_attention_break())
 
 
 def move_section(side, face):
+    # keep moving to next section
     pydirectinput.keyDown(side)
-    time.sleep(next_section_break())
+    time.sleep(random_breaks.next_section_break())
     pydirectinput.keyUp(side)
-    time.sleep(paying_attention_break())
+    time.sleep(random_breaks.paying_attention_break())
+    # face direction to plant/water
     pydirectinput.press(face)
-    time.sleep(paying_attention_break())
+    time.sleep(random_breaks.paying_attention_break())
 
-def one_section(side, face):
-    time.sleep(fake_water())
+def one_section(side, face, action):
+    if action == "water":
+        interact.water()
     for k in range(5):
+        # move one plant block to the right
         move_one(side, face)
-        time.sleep(fake_water())
-    time.sleep(paying_attention_break())
+        if action == "water":
+            interact.water()
+    time.sleep(random_breaks.paying_attention_break())
 
-def do_row(side, face):
-    one_section(side, face)
+def do_row(side, face, action):
+    # does a section
+    one_section(side, face, action)
+    # move to next
     move_section(side, face)
-    one_section(side, face)
+    # does next section
+    one_section(side, face, action)
 
 
 def up_row(side):
     if side == "right":
         pydirectinput.keyDown("right")
-        time.sleep(adjust_to_side_break())
+        time.sleep(random_breaks.adjust_to_side_break())
         pydirectinput.keyUp("right")
-        time.sleep(paying_attention_break())
+        time.sleep(random_breaks.paying_attention_break())
         # go up
         pydirectinput.keyDown("up")
-        time.sleep(change_row_break())
+        time.sleep(random_breaks.change_row_break())
         pydirectinput.keyUp("up")
-        time.sleep(paying_attention_break())
+        time.sleep(random_breaks.paying_attention_break())
         # go left
         pydirectinput.keyDown("left")
-        time.sleep(adjust_to_side_break())
+        time.sleep(random_breaks.adjust_to_side_break())
         pydirectinput.keyUp("left")
-        time.sleep(paying_attention_break())
+        time.sleep(random_breaks.paying_attention_break())
         pydirectinput.press("down")
-        time.sleep(paying_attention_break())
+        time.sleep(random_breaks.paying_attention_break())
     elif side == "left":
         pydirectinput.keyDown("up")
-        time.sleep(change_row_break())
+        time.sleep(random_breaks.change_row_break())
         pydirectinput.keyUp("up")
-        time.sleep(paying_attention_break())
+        time.sleep(random_breaks.paying_attention_break())
 
 
-def do_block():
-    do_row("right", "up")
+def do_block(action):
+    # do entire row
+    do_row("right", "up", action)
+    # go to next row of block
     up_row("right")
-    do_row("left", "down")
+    # do that row
+    do_row("left", "down", action)
 
 
-def water_all():
+def do_all(action):
     for i in range(2):
-        do_block()
+        # do a whole block
+        do_block(action)
+        # then go to next block
         up_row("left")
-    do_block()
+    # do final block
+    do_block(action)
 
-
-water_all()
+# wait for user to switch windows
+time.sleep(2)
+do_all("water")
