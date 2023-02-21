@@ -25,7 +25,7 @@ def move_section(side, face):
     pydirectinput.press(face)
     time.sleep(random_breaks.paying_attention_break())
 
-def one_section(side, face, action):
+def do_section(side, face, action):
     if action == "water":
         interact.water()
     for k in range(5):
@@ -37,11 +37,11 @@ def one_section(side, face, action):
 
 def do_row(side, face, action):
     # does a section
-    one_section(side, face, action)
+    do_section(side, face, action)
     # move to next
     move_section(side, face)
     # does next section
-    one_section(side, face, action)
+    do_section(side, face, action)
 
 
 def up_row(side):
