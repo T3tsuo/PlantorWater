@@ -4,6 +4,7 @@ import time
 import random_breaks
 import interact
 
+
 def move_one(side, face):
     # move to next soil block
     pydirectinput.keyDown(side)
@@ -25,6 +26,7 @@ def move_section(side, face):
     pydirectinput.press(face)
     time.sleep(random_breaks.paying_attention_break())
 
+    
 def do_section(side, face, action):
     if action == "water":
         interact.water()
@@ -35,6 +37,7 @@ def do_section(side, face, action):
             interact.water()
     time.sleep(random_breaks.paying_attention_break())
 
+    
 def do_row(side, face, action):
     # does a section
     do_section(side, face, action)
@@ -87,6 +90,7 @@ def do_all(action):
     # do final block
     do_block(action)
 
+    
 # wait for user to switch windows
 time.sleep(2)
 do_all("water")
