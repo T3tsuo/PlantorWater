@@ -1,5 +1,9 @@
 from random import random
 
+def plant_break():
+    # 1.5 to 2 seconds
+    return random() * 0.5 + 1.5
+
 
 def water_break():
     # random number from 2.5 to 3 seconds

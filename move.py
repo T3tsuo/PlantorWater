@@ -30,11 +30,15 @@ def move_section(side, face):
 def do_section(side, face, action):
     if action == "water":
         interact.water()
+    elif action == "plant":
+        interact.plant()
     for k in range(5):
         # move one plant block to the right
         move_one(side, face)
         if action == "water":
             interact.water()
+        elif action == "plant":
+            interact.plant()
     time.sleep(random_breaks.paying_attention_break())
 
     
@@ -89,8 +93,3 @@ def do_all(action):
         up_row("left")
     # do final block
     do_block(action)
-
-    
-# wait for user to switch windows
-time.sleep(2)
-do_all("water")
