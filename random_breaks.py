@@ -11,8 +11,8 @@ def water_break():
 
 
 def adjust_to_side_break():
-    # 0.02 to 0.06 seconds
-    return random() * 0.04 + 0.02
+    # 0.02 to 0.05 seconds
+    return random() * 0.03 + 0.02
 
 
 def paying_attention_break():
