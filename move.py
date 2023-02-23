@@ -5,6 +5,9 @@ import random_breaks
 import interact
 
 
+first_plant = True
+
+
 def move_one(side, face):
     # move to next soil block
     pydirectinput.keyDown(side)
@@ -25,30 +28,6 @@ def move_section(side, face):
     # face direction to plant/water
     pydirectinput.press(face)
     time.sleep(random_breaks.paying_attention_break())
-
-    
-def do_section(side, face, action):
-    if action == "water":
-        interact.water()
-    elif action == "plant":
-        interact.plant()
-    for k in range(5):
-        # move one plant block to the right
-        move_one(side, face)
-        if action == "water":
-            interact.water()
-        elif action == "plant":
-            interact.plant()
-    time.sleep(random_breaks.paying_attention_break())
-
-    
-def do_row(side, face, action):
-    # does a section
-    do_section(side, face, action)
-    # move to next
-    move_section(side, face)
-    # does next section
-    do_section(side, face, action)
 
 
 def up_row(side):
@@ -74,6 +53,38 @@ def up_row(side):
         time.sleep(random_breaks.change_row_break())
         pydirectinput.keyUp("up")
         time.sleep(random_breaks.paying_attention_break())
+
+    
+def do_section(side, face, action):
+    global first_plant
+    if action == "water":
+        interact.water()
+    # you have to manually plant your first seeds but the program will water for you
+    elif action == "plant" and first_plant is True:
+        input("Hit anything once you have manually planted (first one) but the soil is moist : ")
+        # wait for user to switch back to game window
+        time.sleep(2)
+        first_plant = False
+        interact.water()
+    elif action == "plant" and first_plant is False:
+        interact.plant()
+    for k in range(5):
+        # move one plant block to the right
+        move_one(side, face)
+        if action == "water":
+            interact.water()
+        elif action == "plant":
+            interact.plant()
+    time.sleep(random_breaks.paying_attention_break())
+
+    
+def do_row(side, face, action):
+    # does a section
+    do_section(side, face, action)
+    # move to next
+    move_section(side, face)
+    # does next section
+    do_section(side, face, action)
 
 
 def do_block(action):
