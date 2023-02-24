@@ -8,6 +8,7 @@ def water():
     time.sleep(random_breaks.water_break())
     pydirectinput.keyUp("z")
     time.sleep(random_breaks.paying_attention_break())
+    print("Watered")
 
 
 def plant():
@@ -21,6 +22,7 @@ def plant():
     time.sleep(random_breaks.plant_break())
     pydirectinput.keyUp("z")
     time.sleep(random_breaks.paying_attention_break())
+    print("Planted")
 
 
 def first_plant():
@@ -28,9 +30,7 @@ def first_plant():
     pydirectinput.keyDown("z")
     time.sleep(random_breaks.plant_break())
     pydirectinput.keyUp("z")
-    input("Hit anything once you have manually added the seeds you want to plant and hit 'plant seeds'")
+    input("Hit enter once you planted your first seeds and finished the dialogue: ")
+    print("Planted")
     # wait for user to switch back to game window
     time.sleep(2)
-    pydirectinput.keyDown("z")
-    time.sleep(random_breaks.plant_break())
-    pydirectinput.keyUp("z")

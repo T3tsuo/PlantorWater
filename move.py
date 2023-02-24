@@ -28,6 +28,7 @@ def move_section(side, face):
     # face direction to plant/water
     pydirectinput.press(face)
     time.sleep(random_breaks.paying_attention_break())
+    print("Moved Section")
 
 
 def up_row(side):
@@ -53,6 +54,7 @@ def up_row(side):
         time.sleep(random_breaks.change_row_break())
         pydirectinput.keyUp("up")
         time.sleep(random_breaks.paying_attention_break())
+    print("Changed Row")
 
     
 def do_section(side, face, action):
