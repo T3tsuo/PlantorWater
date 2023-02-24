@@ -21,7 +21,6 @@ def plant():
     time.sleep(random_breaks.plant_break())
     pydirectinput.keyUp("z")
     time.sleep(random_breaks.paying_attention_break())
-    water()
 
 
 def first_plant():
@@ -35,4 +34,3 @@ def first_plant():
     pydirectinput.keyDown("z")
     time.sleep(random_breaks.plant_break())
     pydirectinput.keyUp("z")
-    water()
