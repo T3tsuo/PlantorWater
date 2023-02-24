@@ -61,9 +61,16 @@ def do_section(side, face, action):
         interact.water()
     # you have to manually plant your first seeds but the program will water for you
     elif action == "plant" and first_plant is True:
-        input("Hit anything once you have manually planted (first one) but the soil is moist : ")
+        # get to the section where you have to pick your seeds
+        pydirectinput.keyDown("z")
+        time.sleep(random_breaks.plant_break())
+        pydirectinput.keyUp("z")
+        input("Hit anything once you have manually added the seeds you want to plant and hit 'plant seeds'")
         # wait for user to switch back to game window
         time.sleep(2)
+        pydirectinput.keyDown("z")
+        time.sleep(random_breaks.plant_break())
+        pydirectinput.keyUp("z")
         first_plant = False
         interact.water()
     elif action == "plant" and first_plant is False:
