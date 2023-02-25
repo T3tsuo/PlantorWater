@@ -10,9 +10,11 @@ first_plant = True
 
 def move_one(side, face):
     # move to next soil block
-    pydirectinput.keyDown(side)
-    time.sleep(random_breaks.adjust_to_side_break())
-    pydirectinput.keyUp(side)
+    pydirectinput.PAUSE = 0.05
+    pydirectinput.press(side)
+    time.sleep(random_breaks.input_break())
+    pydirectinput.press(side)
+    pydirectinput.PAUSE = 0.1
     time.sleep(random_breaks.paying_attention_break())
     # face the block
     pydirectinput.press(face)
@@ -33,9 +35,11 @@ def move_section(side, face):
 
 def up_row(side):
     if side == "right":
-        pydirectinput.keyDown("right")
-        time.sleep(random_breaks.adjust_to_side_break())
-        pydirectinput.keyUp("right")
+        pydirectinput.PAUSE = 0.05
+        pydirectinput.press("right")
+        time.sleep(random_breaks.input_break())
+        pydirectinput.press("right")
+        pydirectinput.PAUSE = 0.1
         time.sleep(random_breaks.paying_attention_break())
         # go up
         pydirectinput.keyDown("up")
@@ -43,9 +47,11 @@ def up_row(side):
         pydirectinput.keyUp("up")
         time.sleep(random_breaks.paying_attention_break())
         # go left
-        pydirectinput.keyDown("left")
-        time.sleep(random_breaks.adjust_to_side_break())
-        pydirectinput.keyUp("left")
+        pydirectinput.PAUSE = 0.05
+        pydirectinput.press("left")
+        time.sleep(random_breaks.input_break())
+        pydirectinput.press("left")
+        pydirectinput.PAUSE = 0.1
         time.sleep(random_breaks.paying_attention_break())
         pydirectinput.press("down")
         time.sleep(random_breaks.paying_attention_break())
