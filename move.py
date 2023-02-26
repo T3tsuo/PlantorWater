@@ -10,7 +10,7 @@ first_plant = True
 
 def move_one(side, face):
     # move to next soil block
-    pydirectinput.PAUSE = 0.05
+    pydirectinput.PAUSE = 0.01
     pydirectinput.press(side)
     time.sleep(random_breaks.input_break())
     pydirectinput.press(side)
@@ -35,7 +35,7 @@ def move_section(side, face):
 
 def up_row(side):
     if side == "right":
-        pydirectinput.PAUSE = 0.05
+        pydirectinput.PAUSE = 0.01
         pydirectinput.press("right")
         time.sleep(random_breaks.input_break())
         pydirectinput.press("right")
@@ -47,7 +47,7 @@ def up_row(side):
         pydirectinput.keyUp("up")
         time.sleep(random_breaks.paying_attention_break())
         # go left
-        pydirectinput.PAUSE = 0.05
+        pydirectinput.PAUSE = 0.01
         pydirectinput.press("left")
         time.sleep(random_breaks.input_break())
         pydirectinput.press("left")
