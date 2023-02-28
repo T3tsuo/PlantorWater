@@ -16,8 +16,8 @@ def paying_attention_break():
 
 
 def next_section_break():
-    # break between 0.275 to 0.3 seconds
-    return random() * 0.025 + 0.275
+    # break between 0.28 to 0.3 seconds
+    return random() * 0.02 + 0.28
 
 
 def change_row_break():
