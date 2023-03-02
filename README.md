@@ -12,6 +12,8 @@
     * Make sure your character is on the bike.
     * Make sure bike is in key slot #1
     * Start by facing up at the bottom left soil of the patch to the right of the house
+
+## User Input:
 * The console will first ask if you want to run the code for Mistralton or Abundant Shrine:
     * Enter 1 for Mistralton, or 2 for Abundant Shrine.
 * The code will ask you to input if you want to plant seeds or water them, it is case-sensitive so enter either 'plant' or 'water'
