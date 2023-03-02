@@ -12,6 +12,8 @@
     * Make sure your character is on the bike.
     * Make sure bike is in key slot #1
     * Start by facing up at the bottom left soil of the patch to the right of the house
+    * Activate a Max Repel once you are in position
+    * you need a pokemon with surf on your team
 
 ## User Input:
 * The console will first ask if you want to run the code for Mistralton or Abundant Shrine:
