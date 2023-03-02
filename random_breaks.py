@@ -28,8 +28,8 @@ def eleven_blocks():
     return random() * 0.02 + 0.89
 
 def second_to_third_break():
-    # from 0.98 seconds to 1 second
-    return random() * 0.02 + 0.98
+    # from 0.96 seconds to 0.98 second
+    return random() * 0.02 + 0.96
 
 
 def three_blocks():
