@@ -1,5 +1,46 @@
 from random import random
 
+
+def cross_water():
+    # 1 - 1.02 seconds
+    return random() * 0.02 + 1
+
+
+def use_surf_break():
+    # 4 - 5 seconds
+    return random() * 1 + 4
+
+def seven_blocks():
+    # 0.53 - 0.55 seconds
+    return random() * 0.02 + 0.53
+
+def six_blocks():
+    # 0.48 - 0.5
+    return random() * 0.02 + 0.48
+
+def four_blocks():
+    # 0.28 - 0.3
+    return random() * 0.02 + 0.28
+
+
+def eleven_blocks():
+    # from 0.89 to 0.91 seconds
+    return random() * 0.02 + 0.89
+
+def second_to_third_break():
+    # from 0.98 seconds to 1 second
+    return random() * 0.02 + 0.98
+
+
+def three_blocks():
+    # from 0.21 to 0.23 seconds
+    return random() * 0.02 + 0.21
+
+
+def two_blocks():
+    # from 0.11 to 0.13 seconds
+    return random() * 0.02 + 0.11
+
 def plant_break():
     # 1.5 to 2 seconds
     return random() * 0.5 + 1.5
