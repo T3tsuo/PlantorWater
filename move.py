@@ -6,6 +6,10 @@ import interact
 
 
 first_plant = True
+opposite_direction = {'right': 'left',
+                      'left': 'right',
+                      'up': 'down',
+                      'down': 'up'}
 
 
 def move_one(side, face):
@@ -39,3 +43,27 @@ def do_section(side, face, action):
         elif action == "plant":
             interact.plant()
     time.sleep(random_breaks.paying_attention_break())
+
+def other_side(side, face):
+    # go right/left
+    pydirectinput.PAUSE = 0.03
+    pydirectinput.press(side)
+    time.sleep(random_breaks.input_break())
+    pydirectinput.press(side)
+    pydirectinput.PAUSE = 0.1
+    time.sleep(random_breaks.paying_attention_break())
+    # go up/down
+    pydirectinput.keyDown(face)
+    time.sleep(random_breaks.change_row_break())
+    pydirectinput.keyUp(face)
+    time.sleep(random_breaks.paying_attention_break())
+    # go right/left
+    pydirectinput.PAUSE = 0.03
+    pydirectinput.press(opposite_direction[side])
+    time.sleep(random_breaks.input_break())
+    pydirectinput.press(opposite_direction[side])
+    pydirectinput.PAUSE = 0.1
+    time.sleep(random_breaks.paying_attention_break())
+    pydirectinput.press(opposite_direction[face])
+    time.sleep(random_breaks.paying_attention_break())
+    print("Other Side")

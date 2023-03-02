@@ -17,33 +17,11 @@ def move_section(side, face):
     print("Moved Section")
 
 
-def up_row(side):
-    if side == "right":
-        pydirectinput.PAUSE = 0.03
-        pydirectinput.press("right")
-        time.sleep(random_breaks.input_break())
-        pydirectinput.press("right")
-        pydirectinput.PAUSE = 0.1
-        time.sleep(random_breaks.paying_attention_break())
-        # go up
-        pydirectinput.keyDown("up")
-        time.sleep(random_breaks.change_row_break())
-        pydirectinput.keyUp("up")
-        time.sleep(random_breaks.paying_attention_break())
-        # go left
-        pydirectinput.PAUSE = 0.03
-        pydirectinput.press("left")
-        time.sleep(random_breaks.input_break())
-        pydirectinput.press("left")
-        pydirectinput.PAUSE = 0.1
-        time.sleep(random_breaks.paying_attention_break())
-        pydirectinput.press("down")
-        time.sleep(random_breaks.paying_attention_break())
-    elif side == "left":
-        pydirectinput.keyDown("up")
-        time.sleep(random_breaks.change_row_break())
-        pydirectinput.keyUp("up")
-        time.sleep(random_breaks.paying_attention_break())
+def up_row(face):
+    pydirectinput.keyDown(face)
+    time.sleep(random_breaks.change_row_break())
+    pydirectinput.keyUp(face)
+    time.sleep(random_breaks.paying_attention_break())
     print("Changed Row")
 
 
@@ -60,7 +38,7 @@ def do_block(action):
     # do entire row
     do_row("right", "up", action)
     # go to next row of block
-    up_row("right")
+    move.other_side("right", "up")
     # do that row
     do_row("left", "down", action)
 
@@ -70,6 +48,6 @@ def do_all(action):
         # do a whole block
         do_block(action)
         # then go to next block
-        up_row("left")
+        up_row("up")
     # do final block
     do_block(action)
