@@ -19,8 +19,8 @@ def six_blocks():
     return random() * 0.02 + 0.48
 
 def four_blocks():
-    # 0.28 - 0.3
-    return random() * 0.02 + 0.28
+    # 0.27 - 0.29
+    return random() * 0.02 + 0.27
 
 
 def eleven_blocks():
@@ -54,11 +54,6 @@ def water_break():
 def paying_attention_break():
     # timer between 0.25 seconds to 0.50 seconds
     return random() * 0.25 + 0.25
-
-
-def next_section_break():
-    # break between 0.28 to 0.3 seconds
-    return random() * 0.02 + 0.28
 
 
 def change_row_break():

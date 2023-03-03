@@ -8,7 +8,7 @@ import move
 def move_section(side, face):
     # keep moving to next section
     pydirectinput.keyDown(side)
-    time.sleep(random_breaks.next_section_break())
+    time.sleep(random_breaks.four_blocks())
     pydirectinput.keyUp(side)
     time.sleep(random_breaks.paying_attention_break())
     # face direction to plant/water
