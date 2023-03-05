@@ -15,8 +15,8 @@ def seven_blocks():
     return random() * 0.02 + 0.53
 
 def six_blocks():
-    # 0.48 - 0.5
-    return random() * 0.02 + 0.48
+    # 0.46 - 0.48
+    return random() * 0.02 + 0.46
 
 def four_blocks():
     # 0.27 - 0.29
